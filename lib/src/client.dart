@@ -67,7 +67,7 @@ class EOSClient {
       if (response.statusCode >= 300) {
         completer.completeError(response.body);
       } else {
-        completer.complete(json.decode(response.body));
+        completer.complete(json.decode(utf8.decode(response.bodyBytes)));
       }
     }).catchError((e, s) {
       completer.completeError(e, s);
